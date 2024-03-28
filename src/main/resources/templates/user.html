@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Spring Security Example</title>
+    <meta charset="UTF-8">
+    <title>User</title>
 </head>
 <body>
-<h1>User, welcome spring boot security page!</h1>
-
-
+Welcome, User!
+<a class="nav-link rounded" th:classappend="${'active bg-primary text-white'}"
+   href="#" th:href="@{/user/main}" aria-current="page">Your INFO</a>
 </body>
 </html>

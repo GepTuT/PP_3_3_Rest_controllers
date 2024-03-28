@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+</head>
+<body>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <li class="nav-item">
+        <a class="nav-link rounded"
+           href="#" th:href="@{/admin/main}">Admin</a>
+    </li>
+</div>
+<li class="nav-item">
+    <a class="nav-link rounded" th:classappend="${'active bg-primary text-white'}"
+       href="#" th:href="@{/user/main}" aria-current="page">User</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link rounded" th:classappend="${'active bg-primary text-white'}"
+       href="#" th:href="@{/user}" aria-current="page">Welcome page</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" th:classappend="${'active bg-primary text-white'}" href="/logout">Logout</a>
+</li>
+
+<h1>User INFO </h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Roles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.firstName}"></td>
+    <td th:text="${user.lastName}"></td>
+    <td th:text="${user.email}"></td>
+    <td th:text="${user.getRoles()}"></td>
+    </tr>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
