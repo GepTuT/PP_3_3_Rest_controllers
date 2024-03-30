@@ -28,7 +28,7 @@ public class AdminController {
     @GetMapping("/main")
     public String getAllUsers(ModelMap model, @AuthenticationPrincipal UserDetails userDetails) {
         User user = userService.findUserByEmail(userDetails.getUsername());
-        model.addAttribute("principal", user);
+        model.addAttribute("user", user);
         model.addAttribute("users", userService.getUsersList());
         model.addAttribute("roles", roleService.findAll());
         model.addAttribute("newUser", new User());

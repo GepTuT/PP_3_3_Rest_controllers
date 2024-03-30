@@ -75,7 +75,9 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-
+    public boolean isAdmin(){
+        return this.roles.stream().anyMatch(x -> x.getRole().equals("ROLE_ADMIN"));
+    }
     @Override
     public String toString() {
         return new StringBuilder("User{")
@@ -122,7 +124,7 @@ public class User implements UserDetails {
     }
     @Override
     public String getUsername() {
-        return firstName;
+        return this.getEmail();
     }
 
     @Override
