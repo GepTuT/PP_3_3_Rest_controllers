@@ -31,10 +31,10 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority authority : authorities) {
             if (authority.getAuthority().equals("ROLE_ADMIN")) {
-                redirectStrategy.sendRedirect(request, response, "/admin/main");
+                redirectStrategy.sendRedirect(request, response, "/admin");
                 return;
             }
         }
-        redirectStrategy.sendRedirect(request, response, "/user/main");
+        redirectStrategy.sendRedirect(request, response, "/user");
     }
 }
