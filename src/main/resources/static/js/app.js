@@ -22,7 +22,7 @@ async function allUsersTable() {
     fetch('/api/users')
         .then(result => result.json())
         .then(data => data.forEach(user => {
-                let roles = user.roles.map(role => ' ' + role.authority)
+                let roles = user.roles.map(role => ' ' + role.authority.substring(5))
                 let tableRow = `$(
                 <tr>
                     <td style="text-align: center; vertical-align: middle; font-size: large">${user.id}</td>
@@ -60,10 +60,10 @@ async function openDeleteModal(id) {
     await fillModalForm(deleteModalForm, modal, id)
     switch (deleteModalForm.roles.value) {
         case '1':
-            deleteModalForm.roles.value = 'ROLE_USER'
+            deleteModalForm.roles.value = 'USER'
             break
         case '2':
-            deleteModalForm.roles.value = 'ROLE_ADMIN'
+            deleteModalForm.roles.value = 'ADMIN'
             break
 
     }
@@ -169,7 +169,7 @@ function getAuthUser() {
         .then(result => result.json())
         .then(data => {
             $('#UserEmail').append(data.email);
-            let roles = data.roles.map(role => ' ' + role.authority)
+            let roles = data.roles.map(role => ' ' + role.authority.substring(5))
             $('#UserRoles').append(roles)
             let tableRow = `$( 
                 <tr>

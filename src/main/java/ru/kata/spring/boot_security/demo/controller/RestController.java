@@ -6,7 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.RoleServiceImpl;
+import ru.kata.spring.boot_security.demo.service.UserService;
 import ru.kata.spring.boot_security.demo.service.UserServiceImpl;
 
 import java.util.List;
@@ -16,12 +18,12 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class RestController {
 
-    private UserServiceImpl userService;
+    private UserService userService;
 
-    private RoleServiceImpl roleService;
+    private RoleService roleService;
 
     @Autowired
-    public RestController(UserServiceImpl userService, RoleServiceImpl roleService) {
+    public RestController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
